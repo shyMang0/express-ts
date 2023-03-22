@@ -6,12 +6,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const port = 8000;
 const app = (0, express_1.default)();
-app.get("/", (req, res) => {
-    res.send("HELLO FROM EXPRESS + TS!!!!");
+const posts_route_1 = __importDefault(require("./routes/posts.route"));
+app.get('/', (req, res) => {
+    res.send('HELLO FROM EXPRESS + TS!!!!');
 });
-app.get("/hi", (req, res) => {
-    res.send("BYEEE!!");
+app.get('/hi', (req, res) => {
+    res.send('BYEEEsssasdf!!');
 });
+app.use('/posts', posts_route_1.default);
 app.listen(port, () => {
     console.log(`now listening on port ${port}`);
 });
