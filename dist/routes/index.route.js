@@ -15,5 +15,8 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     res.json({ message: 'post index' });
 });
-// router.get('/creator', getPostsByCreator)
+/*========== CATCH INVALID ROUTES ========== */
+router.all('*', (req, res) => {
+    res.status(404).json({ message: 'invalid route' });
+});
 exports.default = router;

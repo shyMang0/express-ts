@@ -21,8 +21,13 @@ const client = new pg_1.Client({
 exports.client = client;
 function connect() {
     return __awaiter(this, void 0, void 0, function* () {
+        try {
+            console.log('Connected to PostgreSQL database');
+        }
+        catch (error) {
+            console.log('Error Connecting to PostgreSQL database');
+        }
         yield client.connect();
-        console.log('Connected to PostgreSQL database');
     });
 }
 exports.connect = connect;

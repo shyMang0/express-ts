@@ -13,35 +13,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-// import { Pool } from 'pg'
+const dotenv_1 = __importDefault(require("dotenv"));
 const dbPg_1 = require("./config/dbPg");
-const port = 8000;
-const app = (0, express_1.default)();
 const index_route_1 = __importDefault(require("./routes/index.route"));
-// app.get('/', (req: Request, res: Response) => {
-// 	res.send('HELLO FROM EXPRESS + TS!!!!')
-// })
-// app.get('/hi', (req, res) => {
-// 	res.send('BYEEEsssasdf!!')
-// })
-// app.use('/posts', postRoutes)
+const app = (0, express_1.default)();
+dotenv_1.default.config();
 app.use(index_route_1.default);
+startServer();
 function startServer() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             yield (0, dbPg_1.connect)();
-            // app.get('/users', async (req: Request, res: Response) => {
-            // 	try {
-            // 		const query = 'SELECT * FROM users'
-            // 		const result = await client.query(query)
-            // 		res.json(result.rows)
-            // 	} catch (err) {
-            // 		console.error(err)
-            // 		res.status(500).json({ error: 'Internal server error' })
-            // 	}
-            // })
-            app.listen(3000, () => {
-                console.log('Server listening on port 3000');
+            const port = process.env.PORT || 3000;
+            app.listen(port, () => {
+                console.log(`Server listening on port ${port}`);
             });
         }
         catch (err) {
@@ -50,4 +35,3 @@ function startServer() {
         }
     });
 }
-startServer();

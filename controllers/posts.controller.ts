@@ -7,9 +7,9 @@ import { Request, Response } from 'express'
 
 export const getPosts = async (req: Request, res: Response) => {
 	// const { page } = req.query;
-	const allQuery = req.query
+	const allParms = req.query
 
-	res.json({ message: 'from controller getPost', par: allQuery })
+	res.json({ message: 'from controller getPost', par: allParms })
 	// try {
 	//     const LIMIT = 8;
 	//     const startIndex = (Number(page) - 1) * LIMIT; // get the starting index of every page

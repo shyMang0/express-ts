@@ -9,8 +9,12 @@ const client = new Client({
 })
 
 async function connect() {
+  try {
+    console.log('Connected to PostgreSQL database')
+  } catch (error) {
+    console.log('Error Connecting to PostgreSQL database')
+  }
 	await client.connect()
-	console.log('Connected to PostgreSQL database')
 }
 
 async function disconnect() {
@@ -18,4 +22,15 @@ async function disconnect() {
 	console.log('Disconnected from PostgreSQL database')
 }
 
+
+		// app.get('/users', async (req: Request, res: Response) => {
+		// 	try {
+		// 		const query = 'SELECT * FROM users'
+		// 		const result = await client.query(query)
+		// 		res.json(result.rows)
+		// 	} catch (err) {
+		// 		console.error(err)
+		// 		res.status(500).json({ error: 'Internal server error' })
+		// 	}
+		// })
 export { client, connect, disconnect }

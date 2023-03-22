@@ -15,8 +15,8 @@ exports.getPosts = void 0;
 // const router = express.Router();
 const getPosts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     // const { page } = req.query;
-    const allQuery = req.query;
-    res.json({ message: 'from controller getPost', par: allQuery });
+    const allParms = req.query;
+    res.json({ message: 'from controller getPost', par: allParms });
     // try {
     //     const LIMIT = 8;
     //     const startIndex = (Number(page) - 1) * LIMIT; // get the starting index of every page
